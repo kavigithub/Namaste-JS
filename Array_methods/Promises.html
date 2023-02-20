@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <p>To avoid call back hell<br>it allow to write asyn code with asyncronise fashion</p>
+    <p>A comman practice is to use Promise with Async and Await</p>
+    <p>In JS Promise is an Object which return a value which u hope to receive in futute not now</p> 
+    <p>it will provide two param function resolve and reject</p>
+    <p>You can use .then & .catch method for resolve and reject result</p>
+  <script>
+
+    let valSet = 2;
+
+    const promiseNew = new Promise((resolve, reject) => {
+      //resolve('Hi i m resolve');
+      //reject('hi i m reject');
+      let getRandomNum = Math.floor(Math.random() * 3);
+      console.log(getRandomNum);
+      if(getRandomNum === valSet){
+        resolve('Hi i m FullField');
+      } else {
+        console.log('Hi i am Rejceted')
+      }
+    });
+
+
+    console.log(promiseNew);
+    promiseNew.then((data) => console.log(data)).catch((err) => console.log(err));
+   // promiseNew.catch((data) => console.log(`${new Error(data)}`));
+
+  </script>
+</body>
+</html>

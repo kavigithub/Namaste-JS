@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn{
+      width: 200px;
+      background-color: blueviolet;
+      color: #fff;
+      display: block;
+      margin: 20px auto;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    .btn:hover {
+      color: black;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>Fetch Returns Promises</li>
+    <li>Its return Promise so you have to make another call for .json formate. See example below</li>
+    <li>Default is GET request, support other method always</li>
+    <li>Fetch APi : Browser API for HTTP(Ajax) request</li>
+    <li>Fetch errros throws error if cannot reslove</li>
+    <li>Error reponse still a response (400-500)</li>
+
+    <button class="btn">Fetch Tours</button>
+  </ul>
+  <script type="module">
+   // let apiData = 'https://course-api.com/react-tours-project';
+    let apiData = 'https://course-api.com/react-tours-projects';
+   // console.log(fetch(apiData));
+
+   /*  fetch(apiData).then((response) => response.json()).then((data) =>  console.log(data)).catch((err) => console.error(err)); */
+   let getFunc = async function(){
+      try {
+        let resp = await fetch(apiData);
+        console.log(resp);
+        if(!resp.ok){
+          const msg = `there was an error "${resp.status} ${resp.statusText}"`;
+          throw new Error(msg);
+        }
+       /*  let getData = await resp.json();
+        console.log(getData); */
+        return getData;
+      } catch (error) {
+        console.log(`This is an ${error}`)
+      }
+   }
+
+   //getFunc();
+
+   const getBtn = document.querySelector('.btn');
+   getBtn.addEventListener('click', getFunc)
+
+ 
+  </script>
+</body>
+</html>

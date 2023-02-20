@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>array includes check if the item is in the array</p>
+  <p>useful in the conditional statement</p>
+  
+  <script>
+    const products = [
+      {
+        title: 'High Back Bench',
+        company: 'Ikea'
+      },
+      {
+        title: 'Albany Table',
+        company: 'macros'
+      },
+      {
+        title: 'Accent Chair',
+        company: 'Carssa'
+      },
+      {
+        title: 'Wooden Table',
+        company: 'Ikea'
+      }
+    ];
+
+    let getTxt = 'table';
+    let searchString = products.filter((item) => item.title.toLowerCase().includes(getTxt));
+    console.log(searchString);
+
+    let itemsList = ['Lemon', 'Salt', 'Milk'];
+
+    if(itemsList.includes('Milk')){
+      console.log('Yeah...i m in the list');
+    }
+  </script>
+</body>
+</html>

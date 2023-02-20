@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  ref link: https://www.youtube.com/watch?v=t1nFAMws5FI&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=14
+  <br>
+  https://www.youtube.com/watch?v=t1nFAMws5FI&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=15<br>
+  https://www.youtube.com/@akshaymarch7/playlists
+  <br>
+  closure is a function along with its lexical scope know as closure.<br>
+  A function along with its lexical environment scope bundle together forms a closure : Most Imp<br>
+  Inner function forms a closure within outter environment<br>
+  clouser is a combination of a function and its lexical scope bundle together, forms a closure
+  uses of closure<br>
+  1) Module Desing pattern<br>
+  2) Curring<br>
+  3) Functions like once<br>
+  4) Memoize<br>
+  5) Maintain state in async world<br>
+  6) SetTimeout<br>
+  7) Iterators<br>
+  9) Data hideing and encapsuliation
+  8) And many more...
+  <br>
+  Disadvantage<br>
+  Over consumption of memory<br>
+  if we not handle property it will lead to memory leak<br>
+  Garbage Collector<br>
+  Is like a programe in the browser or in Javascript Engine, which kind of freeze up the unutilize memory.<br>
+  Whenever you create function, js , in programming language C++ C, its developer who decide how to used memory. Unused variables are automatically deleted in High Level Programming language by garbage collector. Closures allocate a lot of memory which cannot be deleted so this acts as a disadvantage.
+  5. Some browsers now have smart garbage collectors that automatically deletes variables that are not used outside closures.
+
+  <script>
+    //call function inside function is called closure
+    function x(){
+      let a = 9;
+      function y() {
+        console.log(a)
+      }
+      a = 100;
+      //y()
+      return y;
+    }
+    let z = x();
+    console.log(z)
+    z();
+
+    //anohter eg
+    function a() { //closure of 'a func' hold ref b
+     let b = 900;
+     function c(){ //closure of 'c func' hold ref v
+      let v = 800;
+      function d(){ 
+        console.log(v, b)
+      }
+      d()
+     } 
+     c()
+    }
+    a()
+
+   /*  Scope: 
+          Local
+            this: Window
+          Closure (c)
+            v: 800
+          Closure (a)
+            b : 900
+          Script
+            z : ƒ y()
+          Global
+           */
+
+  function timerFunc() {
+   /*  for(let i = 1; i <= 5; i++){
+      setTimeout(() => {
+        console.log(i)
+      }, i * 1000)
+    }
+    console.log('Namaste Javascript') */
+
+    //lets how to slove with clouser
+    for(var i = 1; i <= 5; i++){ //(will give u new val if i )
+      function close(param) { //create clouser to create ref for i,
+        setTimeout(function(){   //this inner function forms a closure within outter environment ref 'i'
+          console.log(param) //this is the ref(i) but it don't have clouser...let's create it
+      }, param * 1000)
+      }
+      close(i) //ref which have new value each time when close func run after 1sec
+    }
+  } 
+  timerFunc();  
+  
+  /////////////////////////////////////////////////////////////////////////////////
+  function outest(){
+    let c = 20;
+    function outter(b){
+      //var ab = 10;
+      function inner(){ //inner func can access outter env.
+        console.log(ab, b, c);
+      }
+      //this inner function along with its lexical outter env. is known as clouser
+      //this inner function forms a clouser in its outter(parent) environment 'b' is also part  of outter env of inner func
+      //var ab = 10;
+      //let ab = 10;
+      return inner();
+    }
+    return outter('hello world')
+}
+//outter('hello world')
+let ab = 100;
+outest();
+/////////////////////////////////////////////
+function counter(){
+  var count = 0;
+  return function incrementCounter(){
+    count++;
+    console.log(count, 'count')
+  }
+}
+//now u can't handle count outside of function..this is data Data hideing
+//console.log(count) //Uncaught ReferenceError
+let counter1 = counter();
+counter1();
+counter1();
+
+let counter2 = counter();
+counter2();
+counter2();
+counter2();
+counter2();
+counter2();
+///////////////////////////////////////////////
+
+//counstructor function with closure
+function Counter(){
+  let count = 0;
+  this.incrementCounter = function(){
+    count++;
+    console.log(count, 'increment from constructor');
+  }
+  this.decrementCounter = function(){
+    count--;
+    console.log(count, 'decrement from constructor');
+  }
+}
+//when u create constructor function we have to use new 'key' word;
+let newCount = new Counter();
+newCount.incrementCounter();
+newCount.incrementCounter();
+newCount.incrementCounter();
+newCount.decrementCounter();
+newCount.decrementCounter();
+newCount.decrementCounter();
+///////////////////////////////////////////////////////////////////////
+
+//Relation between Garbage Collection, Memory Leaks, and Closures?
+function abc(){
+  let kl = 0;
+  return function op(){  //this function op forms a closure with variable 'kl'
+    console.log(kl);
+  } 
+}
+abc()
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object-property-initializer-shorthand-in-javascript</title>
+</head>
+<body>
+  <p>
+    Property flags<br>
+Object properties contain three special attributes so-called “flags” except value.
+<br>
+writable: By default, it is true. When the true value of the property can be changed. Otherwise, it is read-only When set to false. (Data Descriptors)<br>
+enumerable: By default, it is true. When true the property can be counted and show up when iterating using a loop (for… in), otherwise not when set to false.<br>
+configurable: By default, it is true. When true the property descriptor can be modified later and the property can be deleted from the respective object, otherwise not when set to false.<br>
+  </p>
+
+  <script>
+    let a = 10;
+    let b = 20;
+    const newObj = {a, b};
+    console.log(newObj);
+    b = 40;
+    console.log(newObj);
+
+    const propName = 'Prop1';
+    const prop_name_compute = () => 'Property-3*' + 3;
+    console.log(prop_name_compute());
+
+    const newObj2 = {
+      [propName] : 'Str',
+      [prop_name_compute()]: 3*3
+    }
+    console.log("With ES6- Computed Property Names: ", newObj2);
+
+    var key = "Dynamic Property Names";
+        var object = {};
+        object[key] = "JavaScript";
+        console.log("With ES6- Computed Property Names-sample code1: ", object);
+
+     let key1 =  "Dynamic Property Names";
+     let obj1 = {
+        [key1] : 'Javascritp'
+     }
+
+     console.log("With ES6- Computed Property Names-sample code2: ", obj1);
+
+     const items = ["Notebook", "Pen", "Laptop"];
+     const obj3 = {
+      [items]: 'Items Lits'
+     }
+     console.log(obj3, '********************' ,obj3[items]);
+
+     let person = {
+            firstName: "Angel",
+            lastName: "Kathy",
+            age: 25,
+            location: "India"
+        };
+        //method defineProperty() to add property to an object or modifies attributes of an existing property
+        //setting writable attribute to true so we can modify
+        Object.defineProperty(person, 'pincode', {
+            value: 400100,
+            writable: true ///try false
+        });
+        console.log(person);
+
+      person.pincode = 400001;
+      console.log(person);
+
+     let person2 = {
+      firstName: 'Bikule',
+      lastName: 'Nora',
+      age: 32,
+      location: 'Ajoo'
+     } 
+
+     Object.defineProperty(person2, 'pincode', {
+      value: 400020,
+      enumerable: false
+     })
+
+     console.log("person object: ", person2);
+     //this will not print the property whose enumerable property set to false.
+     console.log("***Enumerable properties***")
+        for (let key in person2) {
+            console.log(key);
+        }
+
+      //to get object full information including all the properties descriptor & flags
+          let descriptor = Object.getOwnPropertyDescriptors(person);
+
+        //JSON.stringify is used to print the JavaScript object returned by Object.getOwnPropertyDescriptors function into JSON string.
+        console.log(JSON.stringify(descriptor, null, 2));
+        
+        let student1 = {
+            'name': 'Maria',
+            'greeting': 'Hello',
+            'marks1': 65,
+            'marks2': 70
+        };
+
+        //method defineProperties to update existing multiple properties to an object or modifies attributes of an existing property
+        Object.defineProperties(student1, {
+            'greeting': {
+                value: 'Welcome',
+                writable: false
+            },
+            'marks1': {
+                value: 90,
+                writable: false
+            },
+            'marks2': {
+                value: 75
+            }
+        });
+        console.log("student1 object properties names using Object.getOwnPropertyNames: ", Object.getOwnPropertyNames(student1));
+        console.log(student1.name)
+        console.log("student1 greeting property: ", student1.greeting);
+        console.log("student1 marks1 property: ", student1.marks1); // 90
+        console.log("student1 marks2 property: ", student1.marks2); //75
+
+        //sample code1
+        //Creates a Person Object
+        let personNew = {
+            firstName: "Angel",
+            lastName: "Kathy",
+            age: 25
+        };
+        //method defineProperties() to add new multiple properties to an object or modifies attributes of an existing property
+        Object.defineProperties(personNew, {
+            'location': {
+                value: 'India',
+                writable: true // change into false
+            },
+            'pincode': {
+                value: 400100,
+                writable: false
+            }
+        });
+
+        console.log(personNew);
+        personNew.location = 'Ohio';
+        console.log(personNew);
+
+        var marks = [
+            { subject: 'JavaScript', score: 5.50 },
+            { subject: 'OOP', score: 5.00 },
+            { subject: 'Java', score: 6.00 },
+            { subject: 'C#', score: 4.00 }];
+
+        let getEntry = Object.entries(marks);    
+
+        for(let [key, value] of getEntry){
+          console.log(`${key} : ${value}`);
+        } 
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="text">Hello</div>
+  <div class="text">Person</div>
+  <div class="text">There</div>
+
+  <script>
+    const text = "Udemu";
+    console.log(Array.from(text));
+
+    let mySet = new Set();
+    mySet.add({name: 'Dom'});
+
+    const setNewArr = Array.from(mySet);
+    console.log(setNewArr);
+    setNewArr[0]['name'] = 'Node';
+    console.log(setNewArr);
+    console.log(mySet);
+
+    for(let value of mySet.values()){
+      console.log(value);
+    }
+
+    let getNodeList = document.querySelectorAll('.text');
+    console.log(getNodeList);
+   /*  let newTxt = Array.from(getNodeList).find((items) => {
+      if(items.textContent === 'Person') {
+        return items;
+      }
+    });
+ */
+    let newTxt = Array.from(getNodeList).find((items) => items.textContent === 'Person');
+    console.log(newTxt);
+
+    const items = Array.from({length:120}, (_, index) => {
+      return index;
+    });
+    console.log(items);
+
+    const itemsPerPg = 8;
+    const totalPages = Math.ceil(items.length / itemsPerPg); //15
+    console.log(totalPages);
+
+    //array.from ...the para will be the obj which u want to work with,,, and the param will be call back func...will be work same as Map funct
+    const newPagesItemSize = Array.from({length : totalPages}, (_, index) => {
+       const start = index * itemsPerPg;
+
+       console.log(index, start);
+       let temptItem = items.slice(start , start + itemsPerPg);
+      console.log(temptItem);
+      return temptItem;
+      
+    })
+  console.log(newPagesItemSize);
+
+
+    
+  </script>
+</body>
+</html>

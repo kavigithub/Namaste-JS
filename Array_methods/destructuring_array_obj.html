@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let fruits = ['orange', 'apple', 'banana', 'mango'];
+
+    const fruit1 = fruits[1];
+    const fruit2 = fruits[2];
+    console.log(fruit1, fruit2); 
+
+    const [orange, apple, , mango] = fruits;
+
+    console.log(orange, apple, mango);
+
+    let first = 'bob';
+    let second = 'John';
+    [second, first] = [first, second];
+    console.log(first, second); //john bob
+    console.log(second, first); //bob john
+
+    /////////////////////////////////////////////////////
+    let bob = {
+      firstName : 'Bob',
+      last : 'Sanders',
+      city: 'chikago',
+      siblings: {
+        sister : ['jane', 'preeti']
+      }
+    }
+
+    const {firstName, last, city, siblings:{sister:favouriteSibling}} = bob; //favouriteSibling is var name
+    console.log(firstName, last, city, favouriteSibling);
+
+    /* function printPerson(person) {
+        //console.log(`${person.firstName} ${person.last}`);
+        const {firstName, last, city, siblings:{sister:favouriteSibling}} = person;
+        console.log(`${firstName} ${last}`);
+    } */
+
+    function printPerson({firstName, last, city, siblings:{sister: favSis}}) {
+      console.log(`${firstName} ${last} and my fav sis is ${favSis.join(', ')}`)
+    }
+    printPerson(bob)
+
+  </script>
+</body>
+</html>

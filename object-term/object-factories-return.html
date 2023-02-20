@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+     // Define an object and Accept parameters
+     function createCar(make, model, year) {
+       return {
+        make: make,
+        model: model,
+        year: year
+       }
+     }
+
+     //call methods and create alot of object of any type 
+     const mercedez = createCar('Mercedez', 'GT', 2006);
+     console.log(mercedez);
+
+     console.log("Using object factories - mercedez: function length: ", Object.getOwnPropertyNames(mercedez).length)
+        console.log("Using object factories - mercedez: method type? : ", typeof mercedez);// object
+  </script>
+</body>
+</html>

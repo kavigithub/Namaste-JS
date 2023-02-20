@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="https://www.youtube.com/watch?v=pslr6SWXFjQ" target="_blank">https://www.youtube.com/watch?v=pslr6SWXFjQ</a>
+  <script>
+     //with ES6
+        //sample1 code
+        let course = {};// "object literal" syntax
+        course = {
+            name: "JavaScript", // by key "name" store value "JavaScript"
+            language: 'scripting' // by key "language" store value "scripting"
+        };
+        console.log("Object Literal - Course object: ", course);
+
+        let lecture = {};
+        lecture.course = 'Javascript';
+        lecture['version'] = 'ES6';
+        lecture.language = 'Scripting';
+        console.log("Object Literal - key value: " + lecture.course + " with version " + lecture.version + " is a " + lecture.language);
+
+        const a = 10, b = 20;
+        const newObj = {
+          a , b
+        }
+
+        console.log(newObj);
+
+       // Computed Property Names /Dynamic Property Keys Syntax:
+       let propertyNmae = 'Property 1';
+       let computed_property_name = () => 'Property-3*' + 3;
+
+       let oldObj = {};
+       oldObj[propertyNmae] = 'String';
+       oldObj[computed_property_name()] = 3 * 3;
+       console.log("Before ES6- Computed Property Names: ", oldObj);
+
+       const propName = 'Prop1';
+      const computed_prop_Name = () => 'Property-3*' + 3;
+
+      const newObj_1 = {
+        [propName]: 'StringAttach',
+        [computed_prop_Name()]: 3 * 3
+       }
+       console.log("With ES6- Computed Property Names: ", newObj_1);
+
+       //JavaScript Object Literal-Computed Property Names
+       //sample1 code
+       var key = "Dynamic Property Names";
+        var object = {};
+        object[key] = "JavaScript";
+        console.log("With ES6- Computed Property Names-sample code1: ", object);
+
+        let key2 = 'Dynamic Property Name';
+        let obj2 = {
+          [key] : 'Javascript2'
+        }
+        console.log("With ES6- Computed Property Names-sample code2: ", obj2)
+
+        let name = 'Weekly Name';
+        let Week = {
+          [name] : 'Monday',
+          'day hours': 23
+        }
+        console.log("With ES6- Computed Property Names-sample code3: ", Week)
+        console.log('Week name is: ', Week[name]); // Monday
+        console.log('Day hours is ', Week['day hours']); // 24
+
+        const items = ["Notebook", "Pen", "Laptop"];
+        const obj3 = {
+          [items] : "Items List"
+        }
+        console.log('obj items key value is: ',obj3[items], obj3) // Item Lists
+
+        //JavaScript Object Literal-Spread properties Example
+        const x1 = { a: 10, b: 20 }
+        const y1 = { c: 30, d: 40 }
+
+        const xy1 = {...x1, ...y1};
+        console.log("With ES6- Object Literal-Spread properties: ", xy1);
+
+        //JavaScript Object Literal-Spread properties (cloned and merged) Example
+        let obj10 = {greeting: 'good morning', time : 7};
+        let obj11 = {greeting1: 'Good Afternoon', time1: 4};
+        let obj12 = {greeting2: 'Good Evening', time1: 8};
+
+        let clonedObj = {...obj10};
+        console.log("Object Literal-Spread properties-Clone object: ", clonedObj);
+        let mergedObj = { ...obj10, ...obj11, ...obj12 }
+
+        console.log("Object Literal-Spread properties-Merged object: ", mergedObj);
+
+        //JavaScript Object Literal-Short Methods Example
+        //before ES6 old syntax
+        const oldObj_1 = {
+            a: 10,
+            b: 20,
+            sum: function () { return this.a + this.b }
+        }
+        console.log('before ES6 Object Literal-Short Methods=>sum() is: ', oldObj_1.sum());
+
+        //with ES6 new syntax
+        const newObj_2 = {
+          a: 10,
+          b : 20,
+          sum() {
+            return this.a + this.b
+          }
+        }
+
+        console.log('with ES6 Object Literal-Short Methods=>sum() is: ', newObj_2.sum());
+
+        //JavaScript Object Literal-Short Methods Example
+        let machine = {
+            name: 'WindowServer',
+            restart() {
+                console.log(`The ${this.name} is restarting!`);
+            },
+            'patching up'() {
+                console.log(`The ${this.name} is starting up!`);
+            },
+            shutdown() {
+                console.log(`The ${this.name} is shutting down`);
+            }
+        };  
+        console.log(machine.name);
+        console.log('Object Literal-Short Methods-Machine restart: ', machine.restart());
+        console.log('Object Literal-Short Methods-Machine Patching up: ', machine["patching up"]());
+        //console.log('Object Literal-Short Methods-Machine shutdown: ', machine.shutdown());
+
+        //new Code syntax
+        const driver = {
+          name: "Msria",
+          speed : 40,
+          car : 'Audi',
+          speedUp(speedup){
+            this.speed = this.speed + speedup;
+            console.log("new speed = " + this.speed)
+          }
+        }
+
+        console.log('Object Literal-Short Methods-Driver speed: ', driver.speedUp(10));
+
+        //Rest parameter is an array : Specified in the function declaration…
+        let displayColors = function(message, ...colors){ //rest call in function param
+                                console.log(message);
+                                console.log(colors);
+                                for(let i in colors){
+                                  console.log(colors[i])
+                                }
+                             }
+
+        let message = 'List of colors';
+        displayColors(message, 'Red', 'Blue', 'Green');   
+        
+        //call with spread ...call in function calll
+        let colorArray = ['Orange', 'Indigo', 'Yellow'];
+        displayColors(message, ...colorArray); //spread ...call in function calll
+
+        //DDestructuring Array
+        let employee = ["Chandler", "Bing", "male"];
+        let [fName, lName, gender] = employee;
+
+        console.log(fName, lName, gender = 'Female');
+
+        let [...elements] = employee;
+        console.log(elements);
+
+         //DDestructuring Object
+         let emp2  = {
+          fname: 'Chandler',
+          lname: 'Bing',
+          gender: 'Male'
+         }
+
+         let {fname, lname, gen} = emp2;
+         console.log(emp2);
+
+         const vehicleOne = {
+          brand: 'Ford',
+          model: 'Mustang',
+          type: 'Car',
+          year : 2021, 
+          color: 'red',
+          registration: {
+              city: 'Houston',
+              state: 'Texas',
+              country: 'USA'
+            }
+         }
+
+         //function myVehicle(type, color, model, brand){
+          function myVehicle({type, color, model, brand, registration: {state}}){  
+          console.log(`${type} is and the ${model} of ${brand} had ${color} color is registred in ${state}`);
+         }
+         myVehicle(vehicleOne);
+   </script>
+</body>
+</html>

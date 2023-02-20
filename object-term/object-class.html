@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>look at Object Instance html</p>
+  <script>
+    class Car{
+      //constructor method used to initialise and creating object i.e Car
+      constructor(name, year){
+        this.brand = name;
+        this.year = year;
+      }
+      present() {
+        return 'I have a ' + this.brand;
+      }
+
+      static staticMethod(){
+        console.log('this is stattic method');
+      }
+
+      getNumber(){
+        return 'MH1792'
+      }
+
+      age(){
+        let date = new Date();
+        return date.getFullYear() - this.year;
+      }
+
+      get cName(){
+        return this.brand;
+      }
+
+      set cName(x){
+        this.brand = x;
+      }
+
+    }
+
+    const car_1 = new Car('Ford');
+    console.log(car_1);
+    console.log(car_1.present());
+    //console.log(car_1.staticMethod()); //this will creat an error..call directly on Car
+
+   /*  By calling the super() method in the constructor method, we call the parent's constructor method and gets access to the parent's properties and methods. */
+
+    class Model extends Car {
+      constructor(name, mod, year){
+        super(name, year); //super keyword is call the constructor function from the parent class
+        this.model = mod;
+        
+      }
+
+      show(){
+        console.log(this.present() + ', its model of ' + this.model);
+       // return this.present + ', its model of ' + this.model;
+      }
+    }
+
+    const mycar = new Model("Ford", "Mustang", 2018);
+    mycar.show();
+    console.log(mycar.getNumber());
+    console.log("My car is " + mycar.age() + " years old.")
+    console.log(mycar.cName);
+
+
+  </script>
+</body>
+</html>

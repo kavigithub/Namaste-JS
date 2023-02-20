@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>{} this is block. it is also know as compound/Combined statement. A block is combined multiple javascript statement into one group</p>
+  <p><code>
+    //combined statement
+    //we grouped multiple statement together in a block {}... so that we can use it...where JS can expects one statement
+    eg: if(true) (will give u an error syntax as it expects statement)
+    like this if(true) true...this is valid One JS statement but if you want to create multiple statmement then you need to group it in a block {}
+
+   if(true) {
+    //multiple statments
+    var a = 10; //global scope... ...they stored in global scope... u can access
+    let b = 20; //block scope ...they stored in block scope...u can't not access out of this block
+    const c = 30; //block scope  ...they stored in block scope......u can't not access out of this block
+    console.log(a)
+   }
+
+   basically you can access the variable(which is defined by let&const) inside that{} block scope eg let and const...but var is global scope
+
+   Scope :- scope of a variable or a function is the place where these are accessible.
+Block scope :-  The variables and function present within the scope of a block section. And block follows the lexical scope chain pattern while accessing the variable.
+
+   what is shadowing?
+   Providing same name to the variable as of those variable which are present in outer scope.
+   let b = 100
+   {
+    var a = 10;
+    let b = 20;
+    const c = 30;
+    console.log(b) ///20 in block scope it has different memory same happens with const
+   }
+   console.log(b) ///100 in global scope it will change
+
+   const c = 100;
+   function scope(){
+    const c = 30
+    console.log(c);
+   }
+   console.log(c); //100
+   scope(); //30
+
+   5. The shadow should not cross the scope of original otherwise it will give error.
+   6. shadowing let with var is illegal shadowing and gives error.
+
+
+   
+
+  </code></p>
+
+  <script>
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const people = [
+      {name: 'bob', age: 20, position: 'developer', salary: 100},
+      {name: 'peter', age: 23, position: 'designer', salary: 300},
+      {name: 'Susy', age: 30, position: 'The Boss', salary: 400},
+      {name: 'Anna', age: 21, position: 'Intern', salary: 10}
+    ]
+  
+    const youngEmp = people.filter((item) => item.age < 25);
+    console.log(youngEmp);//u will get multiple objects...returns new array can manipulate the size of new array (like map)..on basis of condition
+
+    //if there is no match
+   // let seniorDev = people.filter((item) => item.position === 'Senior Dev');
+   // console.log(seniorDev); u will get [] empty array in case of object
+
+    let seniorDev = people.find((item) => item.position === 'Senior Dev');
+    console.log(seniorDev); // u will get undefined  in case of find methd
+
+    let youngEmpWithFind = people.find((item) => item.age < 25);
+    console.log(youngEmpWithFind); //u will get single object as find returns single instance, returns first match, if no match undefined
+
+    //////////////////////////////////////////////////////////
+    const dailyTotalSalary = people.reduce((accumlator, currentItem) => {
+      return accumlator + currentItem.salary;
+    }, 0);
+
+    console.log(`the total daily amount will be ${dailyTotalSalary}`);
+  </script>
+</body>
+</html>

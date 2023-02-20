@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3 class="heading">Random List</h3>
+  <ul>
+    <li class="list-item">First Item</li>
+    <li class="list-item">Second Item</li>
+    <li class="list-item">Third Item</li>
+  </ul>
+  <script>
+    const getHeading = document.querySelector('.heading');
+    const getListItem = document.querySelectorAll('.list-item');
+
+    /* console.log(getHeading);
+    console.log(getListItem); */
+
+    const getElem = (selector, isList) => {
+      /* if(isList){
+        const el = [...document.querySelectorAll(selector)];
+        if(el.length < 1) {
+          throw new Error(`Please check your selector ${selector}`)
+        }
+        return el;
+      }
+
+      const el = document.querySelector(selector);
+      if(el) return el; //if its not null
+      throw new Error(`Please check your selector ${selector}`); */
+
+      //2nd Attemept
+      /* const el = isList ? [...document.querySelectorAll(selector)] : document.querySelector(selector);
+      //not a list ...exist or not
+      if(!isList && el) return el;
+
+      //it is list and its empty or not
+      if(isList && !el.length < 1) return el;
+      throw new Error(`Please check your selector ${selector}`); */
+
+     //3rd Attemept
+     const el = isList ? [...document.querySelectorAll(selector)] : document.querySelector(selector);
+     if((!isList && el) || (isList && !el.length < 1)) return el;
+     throw new Error(`Please check your selector ${selector}`);
+    }
+
+    console.log(getElem('.list-item', true));
+
+  </script>
+</body>
+</html>

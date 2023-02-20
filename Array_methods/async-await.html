@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //To use of async and await ... async must be always present, always return Promise.. 
+    //await waits till Promise is setteled
+    //error handling - try and catch block
+
+    const example = async function (params) {
+      return 'hello there';
+    }
+
+   /*  console.log(example()) */
+
+   async function someFunc(){
+    let result = await example();
+    console.log(result);
+    console.log('Hello world');
+    return result;
+   }
+
+   someFunc();
+
+    const users = [
+      {id: 1, name: 'John'},
+      {id: 2, name: 'Peter'},
+      {id: 3, name: 'Sam'},
+    ];
+
+    const articles = [
+      {userId: 1, articles: ['One', 'Two', 'Three']},
+      {userId: 2, articles: ['Fout', 'five', 'Six']},
+      {userId: 3, articles: ['Seven', 'Eight', 'Nine']},
+    ];
+
+function getUser(name) {
+ return new Promise((resolve, reject) => {
+    let userNew = users.find(item => item.name === name);
+    if(userNew) {
+      return resolve(userNew);
+    } else {
+      reject(`there is no such name ${name}`);
+    }
+ })
+}
+
+getUser('John').then((data) => console.log(data.name));
+
+ function getArticles(userId){
+  return new Promise((resolve, reject) => {
+    const getArticle = articles.find(item => item.userId === userId)
+    if(getArticle){
+      return resolve(getArticle.articles);
+    } else {
+      reject(`Wrong ID`);
+    }
+  });
+ }
+
+ getUser('Peter').then((data) => getArticles(data.id)).then((articleName) => console.log(articleName)).catch((err) => console.log(err));
+
+/*     getUser('Peter').then((value) => console.log(value)).catch((err) => console.log(err));
+    getUser('Sam').then((user) => getArticles(user.id)).then((articles) => console.log(articles)).catch((err) => console.log(err)); */
+
+ const getData = async () => {
+  try {
+    const user = await getUser('Sawm'); 
+    if(user) {
+      const article = await getArticles(user.id);
+      console.log(article);
+    }
+  } catch (error) {
+    console.log(`There is an ${error}`);
+  }
+ }   
+
+ getData();
+   
+
+  </script>
+</body>
+</html>

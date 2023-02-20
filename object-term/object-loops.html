@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>https://dotnettutorials.net/lesson/traversing-and-enumerate-javascript-object-properties/</p>
+  <p>The better way to loop through an object is to first convert an object into an array. Then we can loop through that array as we do for the normal array. We can convert an object into an array with three methods:</p>
+  
+  <script>
+    let person = {
+            firstName: "Elon",
+            lastName: "Musk",
+            age: 25,
+            location: "India",
+            pincode: 400001
+        };
+
+     for(let key in person){
+      console.log(key , 'key');
+      console.log(person[key], 'Value');
+      console.log("To print both key and values -->", key + ":" + person[key]); //To print both key and values
+     }
+     
+     var covidYears = ['2019', '2020', '2021'];
+     console.log(`iiiiiiiiiiiiiiinnnnnnnnnnnnnnnnnnnn`);
+     for(let key in covidYears){
+      console.log(`The property keys of array covidYears: ${key}`)
+     }
+     console.log(`oooooooooooooooofffffffffffffffff`);
+     for(let key of covidYears){
+      console.log(`The property keys of array covidYears: ${key}`)
+     }
+
+     console.log('The properties of array covidYears: ', Object.keys(covidYears)); //returns all properties of an array
+
+      //looping through arrays created from Object.keys() method
+      let cy = Object.keys(covidYears);
+      for(let key of cy){
+        console.log(`The property keys of array covidYears: ${key}`)
+      }
+
+      //looping through arrays created from Object.entries() method
+      let objEntry = Object.entries(covidYears);
+      console.log(objEntry);
+     for(let [key, val] of objEntry) {
+      console.log(`${Number(key) + 1} : ${val}`);
+     }
+
+     let personEntry = Object.entries(person);
+     console.log(personEntry);
+     for(let [key, val] of personEntry){
+      console.log(`${key} : ${val}`);
+     }
+
+     Object.getOwnPropertyNames(person).forEach(
+          function (val, index, array) {
+            console.log(`Looping property names & values of an array person created from Object.getOwnPropertyNames() method: ${val} : ${person[val]}`);
+     });
+  </script>
+</body>
+</html>

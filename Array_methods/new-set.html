@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Set Object stores a collection of unique values of types</p>
+  <p>New Set accept iterable Objects</p>
+  <script>
+    const unique = new Set();
+
+    unique.add('first');
+    unique.add('ABC');
+    unique.add('first');
+    unique.add('Seciond');
+    unique.add(5);
+
+    unique.delete('ABC');
+
+    console.log(unique);
+
+    const products = [
+      {
+        title: 'High Back Bench',
+        company: 'Ikea'
+      },
+      {
+        title: 'Albany Table',
+        company: 'macros'
+      },
+      {
+        title: 'Accent Chair',
+        company: 'Carssa'
+      },
+      {
+        title: 'Wooden Table',
+        company: 'Ikea'
+      }
+    ];
+
+    const companiesList = products.map((item) => item.company);
+    const companiesUnique = new Set(companiesList);
+    console.log(companiesUnique);
+    const convertObj = [...companiesUnique, 'All'];
+    console.log(convertObj);
+
+    const getUniqueCompList = ['All' , ...new Set(products.map((item) => item.company))];
+    console.log(getUniqueCompList);
+  </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <div id="showData"></div> 
+  <script>
+    const characters = [
+    {
+        name: 'Luke Skywalker',
+        height: '172',
+        mass: '77',
+        eye_color: 'blue',
+        gender: 'male',
+    },
+    {
+        name: 'Darth Vader',
+        height: '202',
+        mass: '136',
+        eye_color: 'yellow',
+        gender: 'male',
+    },
+    {
+        name: 'Leia Organa',
+        height: '150',
+        mass: '49',
+        eye_color: 'brown',
+        gender: 'female',
+    },
+    {
+        name: 'Anakin Skywalker',
+        height: '188',
+        mass: '84',
+        eye_color: 'blue',
+        gender: 'male',
+    },
+];
+
+let showData = document.getElementById('showData');
+let createUl = document.createElement('ul');
+
+/* FILTER
+Get characters with mass greater than 100
+Get characters with height less than 200
+Get all male characters
+Get all female characters */
+const getGreaterCharectorMass100 = characters.filter((charector) => {
+  return (charector.mass > 100)
+});
+
+console.log(getGreaterCharectorMass100);
+
+const getHeightCharectorless200 = characters.filter(charector => charector.height < 200);
+//console.log(getHeightCharectorless200);
+getHeightCharectorless200.forEach(item => {
+  //console.log(item);
+  let createLi = document.createElement('li');
+  createLi.append(item.height);
+  createUl.append(createLi);
+});
+showData.append(createUl);
+
+let getAllMaleChart = characters.filter(charector => charector.gender === 'male' || charector.gender === 'female');
+console.log(getAllMaleChart);
+let showMaledate = getAllMaleChart.map(item => {
+ let createLi = document.createElement('li');
+ createLi.innerText = `${item.name} is ${item.gender}`;
+ createUl.appendChild(createLi);
+});
+showData.append(createUl);
+
+/* MAP
+Get an array of all names
+Get an array of all heights
+Get an array of objects with just name and height properties
+Get an array of all first names */
+let getNameHeight = characters.map(item => {
+    return item.name + ' ' +  item.height;
+ /*  return `<b>${item.name} and height is ${item.height}</b>`; */
+});
+console.log(getNameHeight);
+
+getNameHeight.forEach(item => {
+  let createLi = document.createElement('li');
+  createLi.innerHTML =  `${item}`;
+  createUl.append(createLi);
+})
+showData.append(createUl);
+
+//Get an array of objects with just name and height properties
+let minifiedObj = characters.map((charecter) => (
+  {
+    name: charecter.name, 
+    height: charecter.height
+  }
+));
+console.log(minifiedObj);
+
+//Get an array of all first names
+let getFirstName = characters.map(charecter => {
+  let getFirstWord = charecter.name.split(' ')[0];
+  return getFirstWord;
+})
+console.log(getFirstName);
+
+/* SOME
+Is there at least one male character?
+Is there at least one character with blue eyes?
+Is there at least one character taller than 200?
+Is there at least one character that has mass less than 50? */
+let oneMaleChar = characters.some(item => item.gender === 'male');
+console.log(oneMaleChar);
+
+let blueEyesChar = characters.some(item => item.eye_color === 'blue');
+console.log(blueEyesChar);
+
+let tallGreater200 = characters.some(item => item.height > 200);
+console.log(tallGreater200);
+
+let massLess50 = characters.some(item => item.mass < 50);
+console.log(massLess50);
+
+/* SORT
+Sort by name
+Sort by mass
+Sort by height
+Sort by gender */
+
+let sortByMass = characters.sort((a, b) => {
+  return b.mass - a.mass; ///chadhata kram
+});
+
+console.log(sortByMass);
+
+let sortByHeight = characters.sort((a, b) => {
+  return a.height - b.height; ///utarta kram
+});
+
+console.log(sortByHeight);
+
+let sortByName = characters.sort((a, b) => {
+    console.log(a.name, 'aaaaaaaaaaaaaa', b.name, 'BBBBBBBBBBBBBBBB');
+    if(a.name < b.name) return -1; //when u return -1...will shows 1st in the list
+    return 1;
+});
+console.log(sortByName);
+
+
+let sortByGender = characters.sort((a, b) => {
+  if(a.gender === 'female') return -1;
+  return 1;
+})
+
+console.log(sortByGender);
+
+/* REDUCE
+Get the total mass of all characters
+Get the total height of all characters
+Get the total number of characters in all the character names
+Get the total number of characters by eye color (hint. a map of eye color to count) */
+
+let getAllMassChar = characters.reduce((accumulator, currentValue, currentIndex, array) => {
+  //console.log(accumulator, currentValue.mass);
+  return parseInt(accumulator) + parseInt(currentValue.mass);
+}, 0); // 0 is the initial value...accumulator..previous value..u can also pass([], {}, number)
+let createDiv = document.createElement('div');
+createDiv.innerText = `All charecter total mass is ${getAllMassChar}`;
+showData.append(createDiv);
+//console.log(getAllMassChar);
+
+let getAllHeight = characters.reduce((accumulator, currentValue, currentIndex, array) => {
+    return parseInt(accumulator) + parseInt(currentValue.height);
+}, 0)
+createDiv.innerText = `All charecter total height is ${getAllHeight}`;
+showData.append(createDiv);
+
+//Get the total number of characters by eye color (hint. a map of eye color to count) 
+let charectorsByEyeColor = characters.reduce((accumulator, currentValue, currentIndex, array) => {
+ // console.log( accumulator[currentValue.eye_color]);
+  let eyeColor = currentValue.eye_color;
+  if(accumulator[eyeColor]) {
+    console.log(accumulator[eyeColor] + 1, '+++++++++')
+    accumulator[eyeColor] = accumulator[eyeColor] + 1;
+  } else {
+    accumulator[eyeColor] = 1;
+  }
+  return accumulator;
+}, {})
+
+console.log(charectorsByEyeColor);
+
+//Get the total number of characters in all the character names
+let getAllNumberName = characters.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue.name.length;
+}, 0)
+console.log(getAllNumberName);
+
+/* EVERY
+Does every character have blue eyes?
+Does every character have mass more than 40?
+Is every character shorter than 200?
+Is every character male? */
+
+let hasAllCharBlueEyes = characters.every(item => item.eye_color === 'blue');
+console.log(hasAllCharBlueEyes);
+
+let hasAllCharMassMore40 = characters.every(item => item.mass > 40);
+console.log(hasAllCharMassMore40);
+
+let allCHarShort200 = characters.every(item => item.height < 200);
+console.log(allCHarShort200);
+
+let allChartIsMale = characters.every(item => item.gender === 'male');
+console.log(allChartIsMale);
+
+  </script>
+</body>
+</html>

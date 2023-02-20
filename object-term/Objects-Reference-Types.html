@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    //Example4: JavaScript Objects, Reference Types
+
+    let fruit = {name: 'Mango'};
+    let fruitJuice = {name: 'Mango'};
+    console.log(fruit === fruitJuice) // return false
+
+    /* Reason? The answer is false because the values of both objects fruit and fruitJuice are the same, but the JavaScript engine compares the reference of two variables which is different hence it is false. */
+
+    let anotherFruit = fruit;
+    console.log(anotherFruit === fruit)//return true
+    fruit.name = 'Apple';
+    console.log(anotherFruit)// {name: ‘apple’}
+    console.log(fruit)// {name: ‘apple’}
+
+    var marks = [
+            { subject: 'JavaScript', score: 5.50 },
+            { subject: 'OOP', score: 5.00 },
+            { subject: 'Java', score: 6.00 },
+            { subject: 'C#', score: 4.00 }];
+
+    function printStudentDetails(student){
+      console.log('<strong>' + student.name + '</strong>');
+      for(let i in marks){
+        console.log('<strong>'+ marks[i].subject + '</strong>' + ':' + marks[i].score);
+      }
+      console.log('--------------------------');
+    }        
+
+    let student = {name: 'Marie Claier', mark: marks};
+    printStudentDetails(student);
+    marks[2].score = 5.50;
+    printStudentDetails(student);
+
+    //JavaScript Objects, JavaScript Passing Objects as Arguments
+    let originMarks = 80;
+    let originStudent = {name : 'Angel'};
+
+    let changeDetails = (mark, obj) => {
+      mark = 95;
+      obj.name = 'John'
+    }
+
+    changeDetails(originMarks, originStudent);
+
+    console.log(originMarks); // Will output 80 since integers are passed by value.
+    console.log(originStudent.name);  // Will output 'John' since objects are passed 
+        // by reference and are therefore mutable.
+
+
+// Example6: JavaScript Objects, JavaScript Pass by Reference
+    function callByRefernce(object){
+      object.name = 'Kathy';
+      console.log(object);
+    }
+
+    let obj = {name: 'Javascript'};
+    console.log(obj)
+    callByRefernce(obj); // In the above example, since objects are passed as reference, hence the value of the object property name is changed.
+    
+    console.log(obj)
+
+  </script>
+</body>
+</html>

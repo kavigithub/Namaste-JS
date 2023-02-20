@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>"for in" loop -: iterate over object properties</p>
+  <p>not advised to use it on arrays, especially if the order is imp</p>
+  <p>on Array use "for of" instead</p>
+  <hr>
+  <p>three methods that convert Object into array</p>
+  <p>Object.keys() : convert property key into array</p>
+  <p>Object.values() : convert property values into array</p>
+  <p>Object.entries() : convert property key and values into array</p>
+  <p class="text"></p>
+  <script>
+    let person = {
+      name: "honey",
+      age: 23,
+      status: 'student'
+    }
+
+    for(let propertyName in person){
+      console.log(`${propertyName} : ${person[propertyName]}`);
+    }
+
+    const getKeys = Object.keys(person);
+    console.log(getKeys);
+
+    const getValues = Object.values(person);
+    console.log(getValues);
+
+    /* const getKeyVal = Object.entries((key, value) => {
+      return `${key} : ${value}`;
+    });
+    */
+
+    const getKeyVal = Object.entries(person);
+    console.log(getKeyVal); //convert into array
+    const result = getKeyVal.map((currentValue, currentIndex) => {
+      //console.log(`${currentValue}`);
+      const [first, second] = currentValue; //5his is ur array destructuring
+      console.log(first, second);
+      return (first, second)
+    })
+
+    
+    for ([firstItem, secondItem] of getKeyVal){
+      console.log(firstItem, secondItem);
+      let createLi = document.createElement('li');
+      createLi.append(`${firstItem} ${secondItem}`);
+      document.querySelector('.text').append(createLi);
+    };
+    //document.body.appendChild('.text');
+
+   console.log(result);
+   let emptyDiv;
+   result.forEach(element => {
+    console.log(emptyDiv += element);
+    //document.querySelector('.text').innerHTML = `${element}`;
+   });
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    let data = [
+      { 
+        name: 'bob',
+        location: {
+          street: '123 main street',
+          timeZOne: {
+            offset : '+7.00'
+          }
+        }
+      },
+      { 
+        name: 'Peter',
+        location: {
+          street: '213 Pine street'
+        }
+      },
+      { 
+        name: 'Susan',
+        location: {
+          street: '123 Apple street',
+          timeZOne: {
+            offset : '+9.00'
+          }
+        }
+      },
+    ];
+
+  
+    data.forEach((item) => {  
+      //console.log(item.location.timeZOne.offset);
+     /*  if(item.location && item.location.timeZOne && item.location.timeZOne.offset){
+        console.log(item);
+      } */
+     // console.log(item?.location?.timeZOne?.offset);
+      if(item?.location?.timeZOne?.offset || 'Hello Word'){ //or default value
+        console.log(item);
+      }
+    });
+
+    let filterItem = data.filter((item) => {
+      if(item.location && item.location.timeZOne && item.location.timeZOne.offset) {
+        return item;
+      }
+      //if(Obitem.location.timeZOne)
+    })
+    console.log(filterItem);
+
+    
+  </script>
+</body>
+</html>

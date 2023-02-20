@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //Nested arrays of an object
+    var person = {
+            firstName: "Elon",
+            lastName: "Musk",
+            location: "India",
+            age: 25,
+            cars: [
+                { name: "Ford", "models": ["Fiesta", "Focus", "Mustang"] },
+                { name: "BMW", "models": ["320", "X3", "X5"] },
+                { name: "Fiat", "models": ["500", "Panda"] }
+            ]
+        };
+
+        person.bloodGroup = 'B+'   
+
+    for(let i in person.cars){
+      //console.log(person[i]);
+      console.log(person[i]);
+      console.log("****" + person.cars[i].name + "****");
+      for(let j in person.cars[i].models){
+        console.log(person.cars[i].models[j]);
+      }
+    }  
+    console.log(Object.getOwnPropertyNames(person).length);
+    console.log(person.hasOwnProperty('cars')); 
+    //console.log(person.includes('firstName'));
+
+    var arrFruits = ["Apple", "Banana", "Kiwi"];
+    console.log(arrFruits.includes('Kiwi'));
+    //for array we used includes and for object we used hasOwnPropertyName
+
+    console.log(person);
+    delete person.location;
+
+    console.log(person);
+
+    let person2 = {
+            firstName: "Elon", //setting the value of property of person object
+            lastName: "Musk",
+            age: 25,
+            location: "India",
+            pincode: 400001
+        };
+        console.log(person2);
+    let{age, pincode, ...remainOtherProperties}  = person2;
+    console.log("After removing age and pincode properties remainOtherProperties object: ", remainOtherProperties);   
+
+  </script>
+</body>
+</html>

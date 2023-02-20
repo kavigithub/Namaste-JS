@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <img src="./img/event-loop/call-stack-and-browser.jpg" width="80%"/>
+    <p> //Call Stack </p>
+    <p>The main Job  of call stack is, execute whatever comes inside it</p>
+    <p>call stack does not have a TIMER</p>
+  </div>
+  <hr>
+  <div>
+    <p>settime out, DOM, Fetch, Location, Local Storage, console.log : is not part JS, all r web api's which Browser have it...</p>
+    <p>settime out, DOM, Fetch, Location, Local Storage, console.log all r part of browser</p>
+    <p>Browser gave us access inside this JS Engine to use  all this superpower</p>
+    <p>we get it all superpower inside the call stack...because of global object : Window</p>
+    <p></p>
+  <img src="./img/event-loop/web-api-in-js.png" width="80%"/>
+  </div>
+  <hr>
+  <div>
+  <img src="./img/event-loop/settime-in-call-stack.png" width="80%"/>
+  <img src="./img/event-loop/event-loop-callback-queue-1.png" width="80%"/>
+  <img src="./img/event-loop/event-loop-callback-queue-2.png" width="80%"/>
+  <img src="./img/event-loop/event-loop-callback-queue-3.png" width="80%"/>
+  <img src="./img/event-loop/event-loop-callback-queue-4.png" width="80%"/>
+  <img src="./img/event-loop/event-loop-callback-queue-5.png" width="80%"/>
+  <img src="./img/event-loop/event-loop-callback-queue-6.png" width="80%"/>
+  <img src="./img/event-loop/event-loop-callback-queue-7.png" width="80%"/>
+
+  <p>global execution contaxt create it inside the call stack</p>
+  <p>moves 1 line</p>
+  </div>
+  <hr>
+  <div>
+    <img src="./img/event-loop/Event-Loop-1.png" width="80%">
+    <img src="./img/event-loop/Event-Loop-2.png" width="80%">
+    <img src="./img/event-loop/Event-Loop-3.png" width="80%">
+    <p>Event loop has job to continusly monitor the Callback Queue and Call Stack</p>
+    <p>If event loop find out that call stack is empty then its check with callback queue,  if callback queue has something in it, it will push inside the call stack and the fucntion execute. thene the function inside the call back queue is pops out after execution</p>
+    <p> Why do we need call back queue</p>
+    <p>if supposed user click on some button for 3-4 times, or any other event, that event is being secured, line up in callback queue, then event will push inside call stack one by one and execute and then it will pop out from call back queue</p>
+  </div>
+  <hr>
+  <div>
+    <p>Micro task queue has high priority over the call stack queue.</p>
+    <p>Call Back queue is also knew as Task Queue.</p>
+    <p>All the call back function which is comes through the propmises is comes inside Micro task queue</p>
+    <p>Mutation Obeserver also goes inside Micro Task Queue</p>
+    <p>The browser we api is used u will see in img (green box...cbF and cbt) is function register in the browser</p>
+    <p>But the call back function like...setTimeout, callback function which is comes from DOM api eg addEventListner will go to the call back queue</p>
+    <img src="./img/event-loop/Micro-task-higher-priority-1.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-2.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-3.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-4.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-5.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-6.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-7.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-8.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-9.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-10.png" width="80%" />
+    <img src="./img/event-loop/Micro-task-higher-priority-11.png" width="80%" />
+  </div>
+
+  <script>
+   
+  
+    
+  </script>
+</body>
+</html>

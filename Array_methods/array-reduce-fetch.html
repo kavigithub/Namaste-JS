@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const cart = [
+      {
+        title: "Samsung Galary",
+        price: 599.99,
+        amount:1
+      },
+      {
+        title: "Google Pixel",
+        price: 499.99,
+        amount:2
+      },
+      {
+        title: "Xiami Redmi Note 2",
+        price: 699.99,
+        amount:4
+      },
+      {
+        title: "Xiami Redmi Note 6",
+        price: 399.99,
+        amount:3
+      }
+    ];
+
+    let {totalItems, cartTotal} = cart.reduce((accumlator, currentItem) => {
+      //console.log(currentItem)
+      const {amount, price} = currentItem;
+      //count Item
+      accumlator.totalItems += amount;
+      //count sum
+      //accumlator.cartTotal += parseFloat((amount * price).toFixed(2));
+      accumlator.cartTotal += amount * price;
+
+      console.log(amount, price)
+      return accumlator;
+    }, {
+      totalItems: 0,
+      cartTotal: 0
+    });
+
+    cartTotal = parseFloat(cartTotal.toFixed(2));
+
+    //console.log(total); let total..where reduce funtion start
+    console.log(totalItems, cartTotal);
+
+    ////////////////////////////////////////////////////////////////
+    let url = 'https://api.github.com/users/john-smilga/repos?per_page=100';
+
+    let fetchFunc = async function() {
+     let response = await fetch(url);
+     let data = await response.json();
+     let newData = data.reduce((accumlator, currentItem) => {
+      //console.log(currentItem.language);
+      let {language} = currentItem;
+      /* if(language){
+        if(accumlator[language]){
+          accumlator[language] = accumlator[language] + 1
+        } else {
+          accumlator[language] = 1;
+        }
+      } */
+      if(language) {
+        accumlator[language] = accumlator[language] + 1 || 1
+      }
+      console.log(language)
+      
+      return accumlator;
+     }, {});
+     console.log(newData);
+    };
+
+    fetchFunc();
+  </script>
+</body>
+</html>
+
+<!--
+   let response = await fetch(url);
+      console.log(response);
+      let data = await response.json();
+      console.log(data);
+      const newData = data.reduce((accumlator, currentItem) => {
+        let {language} = currentItem;
+        //let lang = currentItem.language;
+        //console.log(language);
+       /*  if(language) { //if language property have some kind of value then only interate next if...that would be avoid null
+          if (accumlator[language]) {
+            accumlator[language] = accumlator[language] + 1
+          } else {
+            accumlator[language] = 1; 
+          } // this will give u {JavaScript: 37, CSS: 44, HTML: 14, null: 3, SCSS: 2} to avoid null use above if
+        } */
+        if(language) {
+          accumlator[language] =  accumlator[language] + 1 || 1; 
+        }
+
+        //console.log(accumlator);
+        return accumlator;
+      }, {});
+
+      console.log(newData);
+-->

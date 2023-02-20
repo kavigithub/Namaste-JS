@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    function phoneticLookup(val) {
+      let result = '';
+
+      let lookup = {
+        'alpha' : 'Adams',
+        'bravo' : 'Boston',
+        'Charlie' : 'Chicago',
+        'state us': 'US'
+      }
+
+      result = lookup[val];
+
+      /* switch(val){
+        case 'alpha':
+          result = 'Adams';
+          break;
+        case 'bravo' :
+          result = 'Boston';
+          break;
+        case 'Charlie':
+          result = 'Chicago';
+          break    
+      } */
+
+      return result
+    }
+
+    console.log(phoneticLookup('Charlie'));
+
+    ///////////////////////////////////////////////
+
+    let collection = {
+      "2538"  : {
+        "album" : 'Slipers when wet',
+        "artist" : "Bon Jovi",
+        "tracks" : [
+          'let it rock',
+          'You give love to bad name'
+        ]
+      },
+      "2468"  : {
+        "album" : '1999',
+        "artist" : "Prince",
+        "tracks" : [
+          '1999',
+          'Little red corvette'
+        ]
+      },
+      "1245"  : {
+        "artist" : "Robert Plam",
+        "tracks" : []
+      },
+      "5345" : {
+        "album" : 'ABBA Gold'
+      }
+    }
+
+    //keep copy of collection for test
+    let collectionCopy = JSON.parse(JSON.stringify(collection));
+    console.log(collectionCopy);
+
+    function updateRecords(id, prop, value) {
+      if(value === '') {
+        delete collection[id][prop];
+      } else if(prop === 'tracks') {
+        //if tracks property is not there we need  to create it
+        //if 'collection[id][prop]' is already exist  we gonna set it itself (collection[id][prop])
+        //if 'collection[id][prop]' is not exist then create NEW with [empty array]  
+        collection[id][prop] = collection[id][prop] || [];
+        //push the value to empty array
+        collection[id][prop].push(value);
+      } else {
+        //if value is not empty and prop is not 'tracks' then set the value on to the property
+        collection[id][prop] = value;
+      }
+
+      return collection;
+    }
+
+    updateRecords(2468, 'tracks', 'test');
+    updateRecords(1245, 'tracks', 'U will be my love')
+    updateRecords(5345, 'tracks', 'Will u again')
+    updateRecords(2538, 'album', ''); //delete it
+    console.log(updateRecords(5345, 'artist', 'ABBA'))
+  </script>
+
+</body>
+</html>

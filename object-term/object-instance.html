@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h6>
+    Object's creation in JavaScript, by Using Object constructor to check object instances of constructor example
+  </h6>
+
+  <script>
+    /* function Car(make, model, year, color, passengers, convertible, mileage) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+            this.color = color;
+            this.passengers = passengers;
+            this.convertible = convertible;
+            this.mileage = mileage;
+            this.started = false;
+            this.start = function () {
+                this.started = true;
+            };
+            //rest of the methods here
+} */
+
+      function Car(param){
+        this.make = param.make;
+        this.model = param.model;
+        this.year = param.year;
+        this.color = param.color;
+        this.passengers = param.passengers;
+        this.convertible = param.convertible;
+        this.mileage = param.mileage;
+        this.started = false;
+        this.start = function(){
+          this.started = true;
+        };
+        this.stop = function(){
+          this.started = false;
+        };
+        this.drive = function(){
+          /* if(this.started === true) alert('Zoom Zoom')
+          if(this.started === false) alert('You need to start engine first'); */
+          if(this.started) {
+            alert('Zoom Zoom');
+          } else {
+            alert('You need to start engine first');
+          }
+        }
+      }
+
+      //object literals
+      let cadiParam = {
+        make: 'GM',
+        model: 'Cadilac',
+        year: 1991,
+        color: 'Red',
+        passengers: 5,
+        convertible: false,
+        mileage: 12892
+      }
+
+      //call Car Constructor
+      let cadi = new Car(cadiParam);
+      cadi.start(); //constructor method
+        cadi.drive();
+        cadi.stop();
+
+      //instance of Operator
+      if(cadi instanceof Car) {
+        console.log('Cadi is an instance of Car');
+      }
+
+      //Dog Constructor
+      function Dog(name, bread, weight) {
+        this.name = name;
+        this.bread = bread;
+        this.weight = weight;
+        this.bark = function(){
+          if(this.weight > 25){
+            alert(this.name + ' say wooff! ');
+          } else {
+            alert(this.name + ' say Yip ');
+          }
+        }
+      }
+
+      // code here to implement the dogCatcher function to test if its an instance of Dog or not.
+      function dogCatcher(param){
+        if(param instanceof Dog) 
+        return true
+      }
+
+      //call Dog by Object Literal
+      let fido = {name : 'Fido', breed : 'Mixed', weight: 38};
+
+      //call Dog by Object Constructor
+      let fluffy = new Dog('Fluffy', 'Poodle', 30);
+      var spot = new Dog("Spot", "Chihuahua", 10);
+      //add New Property
+      fluffy.owner = 'Bob';
+      //deleted the weight property
+      delete fluffy.weight;
+      //added a method just assign the method to a new property name in the object.
+      fido.trust = function(person){
+        return (person === 'Bob')
+      }
+      let notBite = fido.trust('Bob');
+      console.log('=====Sample code1 of Dog=====');
+      console.log('Fido object after adding new and deleting existing property: ', fido);
+      console.log("Is trust a property of fido object: ", notBite);
+      
+
+      function Cat(name, breed, weight){
+        this.name = name;
+        this.breed = breed;
+        this.weight = weight;
+      }
+
+      // code here to implement the catCatcher function to test if it’s an instance of Cat or not.
+      function catCatcher(obj){
+        if(obj instanceof Cat) return true;
+      }
+
+      //call the Cat Obj Constructor
+      let meow = new Cat('Meow', 'Simease', 10);
+      let whisker = new Cat('whisker', 'Mixed', 12);
+      let cats = [meow, whisker, fido, fluffy];
+
+      console.log('=====Sample code2 of Cat=====');
+      for(let i = 0; i < cats.length; i++){
+        if(catCatcher(cats[i])) {
+          console.log(cats[i].name + " " + " is a Cat");
+        }
+      }
+
+      let dogs = [meow, whisker, fido, fluffy, spot];
+
+      console.log('=====Sample code1 of dog=====');
+      for(let i = 0; i < dogs.length; i++){
+        console.log(dogCatcher(dogs[i]), 'i value');
+        if(dogCatcher(dogs[i])){
+          console.log(dogs[i].name + ' ' + 'is a dog');
+        }
+      }
+  </script>
+</body>
+</html>

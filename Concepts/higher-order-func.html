@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+   /*  what is Higher Order function? */
+    //A function which is take another function as an argument or returns a function from it self is known as Higher Order Function
+
+    //and the function pass in the HOF is known as the Callback function
+
+    //Why we use functional programming
+    //reusebitlity
+    //modularity
+    //maintianability
+    //breaking down your code in smaller functional unit
+
+
+    //suppose this is the call back function
+    function x(params) {
+      console.log(params)
+    }
+
+    //if x is your callback then y is your HOF
+    function y(){ 
+      return x('retrun func from y calling x func')
+    }
+
+    y();
+
+
+    ///////////////////////////////////////////////////
+    const radius = [3, 2, 1, 4];
+
+    /* const calculateArea = function(param){
+      let output = [];
+
+      for(let i = 0; i < param.length; i++){
+        output.push(Math.PI * radius[i] * radius[i])
+      }
+
+      return output;
+    }
+
+    console.log(calculateArea(radius));
+
+    const calculateCircumference = function(param){
+      let output = [];
+
+      for(let i = 0; i < param.length; i++){
+        output.push(2 * Math.PI * radius[i])
+      }
+
+      return output;
+    }
+
+    console.log(calculateCircumference(radius));
+
+    const calculateDiameter = function(param){
+      let output = [];
+
+      for(let i = 0; i < param.length; i++){
+        output.push(2 * radius[i])
+      }
+
+      return output;
+    }
+
+    console.log(calculateDiameter(radius)); */
+    
+    ///in the below example area, circumference, diameter pass as callback function
+    //In real world or in inerveiw u have to write code like this
+    const area = function(param) {
+      return Math.PI * param * param
+    }
+
+    const circumference = function(param){
+      return 2 * Math.PI * param
+    }
+
+    const diameter = function(param) {
+      return 2 * param
+    }
+
+    const calculate = function(array, logic){
+      const output = [];
+
+      for(let i = 0; i < array.length; i++){
+        output.push(logic(array[i]))
+      }
+
+      return output;
+    }
+
+    console.log(calculate(radius, area))
+    console.log(calculate(radius, circumference))
+    console.log(calculate(radius, diameter))
+
+    ///or
+    console.log(radius.map(area))
+
+  </script>
+</body>
+</html>

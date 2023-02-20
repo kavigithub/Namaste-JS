@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h5>Function Statement | Function Declaration</h5>
+  <p>Hoisting: You can call before Function declare or creating it</p>
+  <pre>
+    a() : yes <br>
+    function a(){  <br>
+      console.log('///this is function statment and function declaration')
+    }  <br>
+    a(): yes
+  </pre>
+  <hr>
+  <h5>Function Expression</h5>
+  <p>Hoisting: You can't call Function Expression before creating it</p>
+  <pre>
+    b() : NOOOOOOOOOOOOOOO<br>
+    let b = function(){
+      console.log('///this is function Expression')
+    } <br>
+    b() : Yes
+  </pre>
+  <hr>
+  <h5>Function Anonymous | Unnamed function</h5>
+  <p>Anonymous function used when they used as values</p>
+  <pre>
+    function(){ <br>
+      console.log('///this is function Expression')
+    } NOOOOOOOOOOOOOOO<br>
+   //will give u syntax error as you didn't mention named
+  </pre>
+  <hr>
+  <h5>Named function expression</h5>
+  <p>Having named to the function expression</p>
+  <p>Hoisting: You can't call before Function Expression creating it</p>
+  <pre>
+   let x =  function funcExpress(){ <br>
+      console.log('Named function expression')
+    }<br>
+    x()<br>
+    funcExpress() ...u can not call like this
+  </pre>
+  <hr>
+  <h5>Function Paramteres and Arguments</h5>
+  <pre>
+    function a(paramters, param2){  <br> 'The values which we gets inside a function as known as Function Parameters'
+      console.log(paramters, param2)
+    }  <br>
+    function xyz() {
+      console.log('we can pass functions inside another functions as an arguments')
+    }
+    a('arguments', xyz); 'The values which we passed inside a function as known as Function Arguments'
+  </pre>
+  <hr>
+  <h5>Return FUnctions</h5>
+  <pre>
+    function a(){  <br>
+     return function(){
+      console.log('return function')
+     }
+    }  <br>
+    a()(); 
+  </pre>
+  <hr>
+  <h1>This is why function is first call function and first citizen</h1>
+  <h2>Ability to used like values</h2>
+  <script>
+
+
+  </script>
+</body>
+</html>

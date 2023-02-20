@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <script type="module">
+    import getFetchData from './test.js'
+
+    const tabs = await getFetchData();
+    console.log(tabs);
+
+    const scores = [23, 90, 33, 74];
+
+    const lastItem = scores[scores.length - 1]; //this is the old method;
+    const lastItemAt = scores.at(-1); //this is the new method;
+    console.log(lastItem, lastItemAt);
+
+    let resp = await fetch('https://course-api.com/react-tours-project');
+    let getData = await resp.json();
+    console.log(getData);
+  </script>
+</body>
+</html>

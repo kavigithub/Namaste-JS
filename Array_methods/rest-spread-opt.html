@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    //rest operators...gathers or collects the items...its in param...function declaration
+    //spread operators...spread out the items we copy them...its in function innvovation or initiate..call
+    //lets see the eg
+    //in functions...when we invoke or declare the func...use spread operator
+    //in functions...when we pass the parameters in the func...use rest operator
+    let fruits = ['apple', 'orange', 'watermelon', 'lemon', 'banana'];
+    let [apple, ...restFruits] = fruits;
+    console.log(apple, restFruits);
+    const specificFruit = restFruits.find((fruit) => fruit === 'lemon');
+    console.log(specificFruit);
+
+    let friends = ['John', 'Peter', 'Bob', 'Marry'];
+    let newFriends = ['Aroga', 'Sushan'];
+    let bestFriend = 'Rio';
+
+    //refrence
+    let friendsList = [...friends, ...newFriends, bestFriend];
+    console.log(friendsList);
+
+    let addMoreFriends = friendsList;
+    //let addMoreFriends = [...friendsList];
+    addMoreFriends[2] = 'Jio';
+    console.log(addMoreFriends);
+
+
+    //object
+    let employee =  {name: 'peter', age: 23, position: 'designer', salary: 300};
+    const {name, ...restItem} = employee;
+    console.log(restItem, name);
+
+    //functions
+    const average = (name, ...numbers) => { // rest operator
+      console.log(name, numbers);
+      let sum = numbers.reduce((total, currentItem) => {return total += currentItem}, 0);
+      console.log(sum)
+
+      let averageCal = numbers.reduce((total, currentItem) => {return total += currentItem}, 0) / numbers.length;
+      console.log(averageCal);
+    }
+
+    const testArray = [7, 98, 21, 83, 93];
+
+    //average(employee.name, 23, 89, 98, 876)
+    average(employee.name, ...testArray); //Spread Operator
+
+    let newEmployee = {...employee, city: 'Chicago', name: 'Kavita'};
+    console.log(newEmployee);
+    console.log(employee);
+
+
+  </script>
+</body>
+</html>
