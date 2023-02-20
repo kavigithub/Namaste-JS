@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //call backs are great notification mechanism
+        function orderPizza(type, name, callbackFunc) {
+            console.log(`You orderd, Pizza is ${type} ${name}`);
+
+            setTimeout(() => {
+                let msg = `The pizza ${type} ${name} is ready`;
+                callbackFunc(msg);
+            }, 3000)
+        }
+
+        orderPizza('Veg', 'Pepeicca Mojjo', function(msg){
+           console.log(msg)
+        });
+
+        const movies = [
+                        { title: `A New Hope`, body:`After Princess Leia, the leader of the Rebel Alliance, is held hostage by Darth Vader, Luke and Han Solo must free her and destroy the powerful weapon created by the Galactic Empire.`},
+                        { title: `The Empire Strikes Back`, body: `Darth Vader is adamant about turning Luke Skywalker to the dark side. Master Yoda trains Luke to become a Jedi Knight while his friends try to fend off the Imperial fleet.` }
+                    ];
+         
+         function getMovieName(){
+            setTimeout(() => {
+                movies.forEach(element => {
+                    console.log(element.title)
+                    return element.title
+                });
+            }, 2000)
+         } 
+         
+         /* In other words, getMovies() runs before createMovies() and the list of Movies is already displayed.
+To solve this, we can use Callbacks. */
+         /* function createNewMovie(movieNew){
+            setTimeout(() => {
+                movies.push(movieNew)
+            }, 3000) //if the time is less than getMovieName than it will run but getMovies() runs before createNewMovie()
+         } */
+
+         function createNewMovie(movieNew, callback){
+            setTimeout(() => {
+                movies.push(movieNew)
+                callback()
+            }, 3000)
+         }
+         //getMovieName();
+
+         createNewMovie({ title: `Return of the Jedi`, body:`Luke Skywalker attempts to bring his father back to the light side of the Force. At the same time, the rebels hatch a plan to destroy the second Death Star.` }, getMovieName);
+                             
+    </script>
+</body>
+</html>

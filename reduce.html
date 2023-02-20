@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let staffs = [
+  { name: "Susan", age: 14, salary: 100 },
+  { name: "Daniel", age: 16, salary: 120 },
+  { name: "Bruno", age: 56, salary: 400 },
+  { name: "Jacob", age: 15, salary: 110 },
+  { name: "Sam", age: 64, salary: 500 },
+  { name: "Dave", age: 56, salary: 380 },
+  { name: "Neils", age: 65, salary: 540 }
+];
+
+        let getSalary = staffs.reduce((accumalator, currentVal) => {
+            /* Let’s now calculate the 10% tithe for all staff and get the total. We could just get the 10% from the total or first get it from each salary before adding them up. */
+            let staffTithe = currentVal.salary * 0.1;
+
+            accumalator.totalTithe = staffTithe;
+            console.log(accumalator);
+
+            accumalator['totalSalary'] += currentVal.salary
+            //accumalator += currentVal.salary 
+
+            return accumalator;
+        },  { totalSalary: 0, totalTithe: 0 });
+
+      window.document.write(getSalary)
+    </script>
+</body>
+</html>
