@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //local storage is part of the web storage API in web browsers, localStorage works similarly to cookies.
+    //local storage accept only string...but we want to store object
+
+    /* let setStorage = localStorage.setItem('user', 'kavita');
+    let getStorage = localStorage.getItem('user');
+    console.log(getStorage); */
+
+    //what is the issue
+    const user1 = {name: 'abc enterprise'};
+    console.log(user1);
+    localStorage.setItem('user' , user1);
+    //when we do some setItem...the setItem function try to pass this object into the string eg.
+    //console.log(String(user1)); //will gave u [object, object]
+    //when you try to convert Object to string...it will give us [object, object]
+    console.log(localStorage.getItem('user'));
+
+    //when you set an item in local storage you need to convert it into JSON.strigify() as setITme func. try to pass the value into string...supposed you try to pass obj.. as we see in above example u cant access object in to string...u need to convet it into string formate that why JSON.stringify
+    localStorage.setItem('user-copy', JSON.stringify(user1));
+    console.log(localStorage.getItem('user-copy'), 'u get this data in string used stringify');
+    console.log(JSON.parse(localStorage.getItem('user-copy')), 'when we get data out of local strorage we need object so we used parse');
+
+   
+  </script>
+</body>
+</html>
